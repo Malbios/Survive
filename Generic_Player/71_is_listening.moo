@@ -1,0 +1,2 @@
+"return true if player is active.";
+return typeof(`idle_seconds(this) ! ANY') != ERR;

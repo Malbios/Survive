@@ -1,0 +1,12 @@
+name = args[1];
+name = strsub(name, " ", "_");
+name = strsub(name, "*", "");
+name = strsub(name, "/", "");
+name = strsub(name, "\\", "");
+name = strsub(name, ":", "");
+name = strsub(name, "\"", "");
+name = strsub(name, "<", "");
+name = strsub(name, ">", "");
+name = strsub(name, "|", "");
+name = strsub(name, "?", "");
+return name;
