@@ -18,7 +18,14 @@ for i in [#0..n]
     endif
   endif
 endfor
+sysobj_props = [];
+for pname in (properties(#0))
+  val = #0.(pname);
+  if (typeof(val) == OBJ)
+    sysobj_props[pname] = val;
+  endif
+endfor
 fh = file_open("metadata.json", "w-tn");
-file_writeline(fh, generate_json(["objects" -> objects]));
+file_writeline(fh, generate_json(["objects" -> objects, "sysobj_props" -> sysobj_props]));
 file_close(fh);
 return exec({"vcs-commit.sh", this.repo_root, "metadata.json", "Update metadata.json", "MOO Capture <capture@moo.local>"});
