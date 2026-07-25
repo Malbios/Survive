@@ -22,7 +22,12 @@ else
   this:write_lookups_toml();
 endif
 vlist = verbs(OBJ);
-idx = vname in vlist;
+idx = 0;
+for i in [1..length(vlist)]
+  if (vname in explode(vlist[i], " "))
+    idx = i;
+  endif
+endfor
 if (idx == 0)
   idx = 1;
 endif
