@@ -2,6 +2,7 @@ if (callers())
   return;
 endif
 $mcp:(verb)(@args);
+$vcs:notify_login(args[1]);
 if ($object_utils:isa(user = args[1], $guest))
   "from $guest:boot";
   oldloc = user.location;
