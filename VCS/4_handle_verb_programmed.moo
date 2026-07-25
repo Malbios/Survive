@@ -5,7 +5,7 @@ had_lookup = maphaskey(this.lookups, OBJ);
 path = this:capture_verb(OBJ, vname);
 name = this.lookups[OBJ];
 if (!had_lookup)
-  exec({"vcs-commit.sh", "lookups.toml", "Update lookups.toml", "MOO Capture <capture@moo.local>"});
+  exec({"vcs-commit.sh", this.repo_root, "lookups.toml", "Update lookups.toml", "MOO Capture <capture@moo.local>"});
 endif
 message = "Program " + name + ":" + vname + " (" + tostr(OBJ) + ")";
 if (valid(programmer))
@@ -13,4 +13,4 @@ if (valid(programmer))
 else
   author = "Unknown <unknown@moo.local>";
 endif
-return exec({"vcs-commit.sh", path, message, author});
+return exec({"vcs-commit.sh", this.repo_root, path, message, author});
