@@ -12,4 +12,4 @@ for i in [#0..n]
     endfor
   endif
 endfor
-return exec({"vcs-commit.sh", ".", "Import ToastCore", "MOO Capture <capture@moo.local>"});
+return exec({"vcs-commit.sh", this.repo_root, ".", "Import ToastCore", "MOO Capture <capture@moo.local>"});
