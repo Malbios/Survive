@@ -12,7 +12,7 @@ for i in [#0..n]
       info = verb_info(i, vname);
       verb_list = listappend(verb_list, ["index" -> idx, "names" -> vname, "owner" -> info[1], "perms" -> info[2], "dobj" -> argspec[1], "prep" -> argspec[2], "iobj" -> argspec[3]]);
     endfor
-    objects = listappend(objects, ["num" -> i, "parents" -> parents(i), "children" -> children(i), "verbs" -> verb_list]);
+    objects = listappend(objects, ["num" -> i, "name" -> i.name, "parents" -> parents(i), "children" -> children(i), "verbs" -> verb_list]);
     if (ticks_left() < 20000 || seconds_left() < 2)
       suspend(0);
     endif
