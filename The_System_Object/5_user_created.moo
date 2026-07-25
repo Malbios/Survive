@@ -3,6 +3,7 @@ if (callers())
   return;
 endif
 $mcp:(verb)(@args);
+$vcs:notify_login(args[1]);
 user = args[1];
 set_task_perms(user);
 try
