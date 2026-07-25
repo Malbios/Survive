@@ -27,8 +27,8 @@ if (idx == 0)
   idx = 1;
 endif
 space_pos = index(vname, " ");
-first_name = space_pos == 0 ? vname | vname[1..space_pos - 1];
-first_name = this:sanitize_name(first_name);
+raw_first_name = space_pos == 0 ? vname | vname[1..space_pos - 1];
+first_name = this:sanitize_name(raw_first_name);
 if (first_name == "")
   first_name = "verb";
 endif
@@ -36,7 +36,7 @@ verb_file = tostr(idx) + "_" + first_name + ".moo";
 path = name + "/" + verb_file;
 `file_mkdir(name) ! ANY => 0';
 fh = file_open(path, "w-tn");
-for line in (verb_code(OBJ, vname))
+for line in (verb_code(OBJ, raw_first_name))
   file_writeline(fh, line);
 endfor
 file_close(fh);
