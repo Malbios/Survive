@@ -1,1 +1,0 @@
-notify(player, tostr(@args));
