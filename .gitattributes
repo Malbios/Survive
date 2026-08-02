@@ -1,0 +1,11 @@
+# MOO db files and exported .moo source are plain-text, line-based formats
+# the server's own parser reads byte-for-byte - a CRLF line ending corrupts
+# them (confirmed live: a Windows git checkout of world.db without this file
+# left it unloadable, "Bad number" / "Cannot load database!" from the server's
+# own DBIO reader). Force LF on checkout regardless of any clone's own
+# core.autocrlf setting.
+*.db text eol=lf
+*.moo text eol=lf
+corponyms.moo text eol=lf
+FORMAT_VERSION text eol=lf
+builtins.json text eol=lf
