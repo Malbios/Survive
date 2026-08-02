@@ -1,21 +1,30 @@
-** LambdaMOO Database, Format Version 1 **
-4
+** LambdaMOO Database, Format Version 17 **
 2
-0
-1
 3
+4
+0 values pending finalization
+0 clocks
+0 queued tasks
+0 suspended tasks
+0 interrupted tasks
+1 active connections with listeners
+3 0
+6
 #0
 System Object
-
-16
+22
 3
--1
--1
--1
 1
 -1
-2
-2
+10
+0
+4
+0
+1
+1
+4
+0
+4
 do_start_script
 3
 173
@@ -24,33 +33,59 @@ do_login_command
 3
 173
 -1
+do_command
+0
+13
+-1
+user_connected
+0
+13
+-1
 0
 0
 #1
 Root Class
-
 16
 3
+1
 -1
--1
--1
--1
+10
 0
+4
+0
+1
 -1
+4
+5
+1
+0
+1
+2
+1
+3
+1
+4
+1
+5
 0
 0
 0
 #2
 The First Room
-
 0
 3
--1
-3
--1
 1
 -1
+10
+0
+4
+1
+1
 3
+1
+1
+4
+0
 1
 eval
 3
@@ -60,18 +95,65 @@ eval
 0
 #3
 Wizard
-
 7
 3
+1
 2
--1
--1
+10
+0
+4
+0
+1
+1
+4
+0
+0
+0
+0
+#4
+LSP Service
+7
+3
 1
 -1
+10
+0
+4
+0
+1
+1
+4
+0
+0
+0
+0
+#5
+LSP Listener
+6
+0
+1
+-1
+10
+0
+4
+0
+1
+1
+4
+0
+2
+do_command
+3
+13
+-1
+do_login_command
+3
+173
 -1
 0
 0
 0
+6
 #0:0
 callers() && raise(E_PERM);
 return eval(@args);
@@ -79,6 +161,30 @@ return eval(@args);
 #0:1
 return #3;
 .
-0 clocks
-0 queued tasks
-0 suspended tasks
+#0:2
+if ((length(argstr) >= 2) && (argstr[1..2] == ";;"))
+result = eval(argstr[3..$]);
+if (!result[1])
+notify(player, "EVAL ERROR: " + toliteral(result[2]));
+endif
+return 1;
+endif
+return 0;
+.
+#0:3
+notify(player, "#$#moodev-login-result ref: 0 ok: 1");
+notify(player, "#$#: 0");
+.
+#5:0
+if ((length(argstr) >= 2) && (argstr[1..2] == ";;"))
+result = eval(argstr[3..$]);
+if (!result[1])
+notify(player, "EVAL ERROR: " + toliteral(result[2]));
+endif
+return 1;
+endif
+return 0;
+.
+#5:1
+return #4;
+.
